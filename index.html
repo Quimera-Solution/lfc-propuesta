@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Familia Cubana</title>
+    <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=Merriweather:wght@300;400;700;900&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cuba: {
+                            red: '#FF0000',
+                            blue: '#002A8F',
+                            white: '#FFFFFF',
+                            dark: '#1a1a1a',
+                            gray: '#f5f5f5',
+                            text: '#333333'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Merriweather', 'Georgia', 'serif'],
+                        condensed: ['Roboto Condensed', 'Arial Narrow', 'sans-serif'],
+                        sans: ['Manrope', 'Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-black font-sans text-white">
+    <!-- Breaking News Ticker -->
+    <div class="breaking-ticker bg-cuba-red text-white py-2 px-4 overflow-hidden border-b border-gray-800">
+<div class="max-w-7xl mx-auto flex items-center gap-4">
+            <span class="font-condensed font-bold text-sm uppercase tracking-wider bg-black/20 px-2 py-1 rounded">Última Hora</span>
+            <div class="ticker-content flex-1 overflow-hidden">
+                <div class="ticker-scroll whitespace-nowrap animate-marquee">
+                    <span class="mx-4">• Nuevas medidas migratorias entran en vigor este mes</span>
+                    <span class="mx-4">• Remesas a Cuba alcanzan récord histórico en 2024</span>
+                    <span class="mx-4">• Restauración del Malecón avanza según lo planificado</span>
+                    <span class="mx-4">• Festival Internacional de Jazz de La Habana anuncia cartel</span>
+                    <span class="mx-4">• Turismo europeo muestra recuperación gradual</span>
+                </div>
+            </div>
+            <span class="text-xs opacity-80" id="current-date"></span>
+        </div>
+    </div>
+    <!-- Top Navigation -->
+    <header class="border-b border-gray-800 bg-black">
+        <!-- Logo Section -->
+        <div class="max-w-7xl mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <!-- Left Menu Trigger -->
+                <button id="menu-trigger" class="lg:hidden p-2 hover:bg-gray-900 rounded-lg transition-colors text-white">
+                    <i data-feather="menu" class="w-6 h-6"></i>
+                </button>
+
+                <!-- Logo -->
+                <div class="flex-1 flex justify-center lg:justify-start lg:flex-none">
+                    <a href="/" class="block">
+                        <div class="logo-container text-center lg:text-left">
+                            <img src="assets/logos/logo.svg" alt="La Familia Cubana" class="h-24 md:h-32 mx-auto lg:mx-0">
+                            
+                            <p class="text-xs text-gray-400 mt-1 font-medium tracking-wide hidden sm:block">
+                                Noticias, vídeos e información para la comunidad cubana
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="flex items-center gap-3">
+                    <button class="hidden md:flex items-center gap-2 px-4 py-2 bg-cuba-blue text-white rounded-full text-sm font-medium hover:bg-cuba-blue/90 transition-colors">
+                        <i data-feather="bell" class="w-4 h-4"></i>
+                        <span>Suscríbete</span>
+                    </button>
+                    <button class="p-2 hover:bg-gray-900 rounded-full transition-colors relative text-white">
+                        <i data-feather="search" class="w-5 h-5"></i>
+                    </button>
+                    <button class="p-2 hover:bg-gray-900 rounded-full transition-colors text-white">
+                        <i data-feather="user" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel (banners) - inserted below headings and before main menu -->
+        <div class="w-full py-4 bg-black">
+            <div class="max-w-7xl mx-auto px-4">
+                <div id="hero-carousel" class="relative overflow-hidden rounded-lg">
+                    <div class="carousel-track flex">
+                        <div class="carousel-slide flex-shrink-0 w-full">
+                            <img src="assets/images/banners/banner1.svg" alt="Banner 1" class="w-full h-40 md:h-56 lg:h-64 object-cover">
+                        </div>
+                        <div class="carousel-slide flex-shrink-0 w-full">
+                            <img src="assets/images/banners/banner2.svg" alt="Banner 2" class="w-full h-40 md:h-56 lg:h-64 object-cover">
+                        </div>
+                        <div class="carousel-slide flex-shrink-0 w-full">
+                            <img src="assets/images/banners/banner3.svg" alt="Banner 3" class="w-full h-40 md:h-56 lg:h-64 object-cover">
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <button id="carousel-prev" class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hidden md:inline-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button id="carousel-next" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hidden md:inline-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+
+                    <!-- Indicators -->
+                    <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-2">
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50" data-index="0" aria-label="Slide 1"></button>
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-white/30" data-index="1" aria-label="Slide 2"></button>
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-white/30" data-index="2" aria-label="Slide 3"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="hidden lg:block border-t border-gray-800 bg-black">
+            <div class="max-w-7xl mx-auto px-4">
+                <ul class="flex items-center justify-center gap-1 py-3">
+                    <li class="relative group">
+                        <a href="#" class="nav-link px-4 py-2 text-sm font-sans font-semibold uppercase tracking-wide text-gray-300 hover:text-white transition-colors">Videos</a>
+                        <div class="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-900 border border-gray-800 rounded-md shadow-lg z-50 w-64">
+                            <ul class="py-2">
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Podcasts</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">La Familia Cubana TV original</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Playlists</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="relative group">
+                        <a href="#" class="nav-link px-4 py-2 text-sm font-sans font-semibold uppercase tracking-wide text-gray-300 hover:text-white transition-colors">Noticias</a>
+                        <div class="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-900 border border-gray-800 rounded-md shadow-lg z-50 w-56">
+                            <ul class="py-2">
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Política</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Entretenimiento</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Economía</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Tecnología</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Deportes</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Social</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Sub Navigation -->
+        <div class="hidden lg:block bg-gray-900 border-y border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 py-2">
+                <div class="flex items-center justify-center gap-6 text-xs">
+                    <span class="font-semibold text-gray-500 uppercase tracking-wider">Tendencias:</span>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">#RemesasCuba</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">#DíazCanel</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">#TurismoCuba</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">#MLBCuba</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">#Huracán2024</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/80 z-50 hidden lg:hidden">
+        <div class="absolute left-0 top-0 h-full w-80 bg-gray-900 shadow-2xl transform -translate-x-full transition-transform duration-300 border-r border-gray-800" id="mobile-menu-panel">
+            <div class="p-4 border-b border-gray-800 flex items-center justify-between">
+                <span class="font-sans font-bold text-xl text-cuba-red">Menú</span>
+                <button id="close-menu" class="p-2 hover:bg-gray-800 rounded-lg text-white">
+                    <i data-feather="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-1">
+                    <li>
+                        <button class="w-full text-left flex items-center justify-between px-4 py-3 text-sm font-sans font-semibold uppercase text-gray-300 hover:bg-gray-800 rounded-lg transition-colors">Videos</button>
+                        <ul class="pl-4 mt-1 space-y-1">
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 rounded-lg">Podcasts</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 rounded-lg">La Familia Cubana TV original</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 rounded-lg">Playlists</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button class="w-full text-left flex items-center justify-between px-4 py-3 text-sm font-sans font-semibold uppercase text-gray-300 hover:bg-gray-800 rounded-lg transition-colors">Noticias</button>
+                        <ul class="pl-4 mt-1 space-y-1">
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 rounded-lg">Política</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 rounded-lg">Entretenimiento</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 rounded-lg">Economía</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 rounded-lg">Tecnología</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 rounded-lg">Deportes</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 rounded-lg">Social</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="p-4 border-t border-gray-800">
+                <button class="w-full flex items-center justify-center gap-2 px-4 py-3 bg-cuba-blue text-white rounded-lg font-medium">
+                    <i data-feather="bell" class="w-4 h-4"></i>
+                    <span>Suscríbete gratis</span>
+                </button>
+            </div>
+        </div>
+    </div>
+<!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+        <!-- Hero Section - NBC Style -->
+        <section class="mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Main Featured Story -->
+                <article class="lg:col-span-7 group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-lg mb-4">
+                        <img src="https://static.photos/cityscape/1024x576/42" alt="La Habana" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-cuba-red text-white text-xs font-bold uppercase tracking-wider rounded">Destacado</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <h2 class="font-sans text-2xl md:text-3xl lg:text-4xl font-bold leading-tight group-hover:text-cuba-red transition-colors text-white">
+                            Nueva era de relaciones diplomáticas: ¿Qué significa el acercamiento histórico para las familias cubanas?
+                        </h2>
+                        <p class="text-gray-400 text-base md:text-lg leading-relaxed">
+                            Expertos analizan las implicaciones del último anuncio gubernamental y cómo podría transformar el día a día de millones de hogares en la isla y en el exilio.
+                        </p>
+                        <div class="flex items-center gap-3 text-sm text-gray-500">
+                            <span class="font-medium text-cuba-blue">Por María Elena Santos</span>
+                            <span>•</span>
+                            <span>Hace 2 horas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Secondary Stories -->
+                <div class="lg:col-span-5 space-y-6">
+                    <!-- Story 2 -->
+                    <article class="group cursor-pointer flex gap-4">
+                        <div class="flex-1 space-y-2">
+                            <h3 class="font-sans text-lg font-bold leading-snug group-hover:text-cuba-red transition-colors text-white">
+                                El éxodo de médicos cubanos: crónica de una diáspora silenciosa
+                            </h3>
+                            <p class="text-sm text-gray-400 line-clamp-2">
+                                Más de 3,000 profesionales de la salud han abandonado sus misiones internacionales en el último año.
+                            </p>
+                            <span class="text-xs text-gray-500">Hace 4 horas</span>
+                        </div>
+                        <div class="w-32 h-24 flex-shrink-0 overflow-hidden rounded-lg">
+                            <img src="https://static.photos/medical/320x240/15" alt="Médicos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                    </article>
+
+                    <!-- Story 3 -->
+                    <article class="group cursor-pointer flex gap-4">
+                        <div class="flex-1 space-y-2">
+                            <h3 class="font-sans text-lg font-bold leading-snug group-hover:text-cuba-red transition-colors text-white">
+                                WiFi en los parques: así cambió internet en Cuba una década después
+                            </h3>
+                            <p class="text-sm text-gray-400 line-clamp-2">
+                                De 35 zonas en 2015 a más de 1,200 puntos de acceso hoy. La revolución digital cubana en cifras.
+                            </p>
+                            <span class="text-xs text-gray-500">Hace 6 horas</span>
+                        </div>
+                        <div class="w-32 h-24 flex-shrink-0 overflow-hidden rounded-lg">
+                            <img src="https://static.photos/technology/320x240/88" alt="WiFi Cuba" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                    </article>
+
+                    <!-- Story 4 -->
+                    <article class="group cursor-pointer flex gap-4">
+                        <div class="flex-1 space-y-2">
+                            <h3 class="font-sans text-lg font-bold leading-snug group-hover:text-cuba-red transition-colors text-white">
+                                Los Rolling Stones en Cuba: 8 años del concierto que hizo historia
+                            </h3>
+                            <p class="text-sm text-gray-400 line-clamp-2">
+                                Testimonios inéditos de quienes vivieron aquella noche de marzo cuando el rock llegó a La Habana.
+                            </p>
+                            <span class="text-xs text-gray-500">Hace 8 horas</span>
+                        </div>
+                        <div class="w-32 h-24 flex-shrink-0 overflow-hidden rounded-lg">
+                            <img src="https://static.photos/event/320x240/55" alt="Concierto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                    </article>
+
+                    <!-- Live Update Box -->
+                    <div class="bg-gray-900 border border-gray-800 text-white rounded-lg p-4">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-red-400">En Desarrollo</span>
+                        </div>
+                        <h4 class="font-sans font-bold mb-2">Tormenta tropical se forma cerca del Caribe</h4>
+                        <p class="text-sm text-gray-400 mb-3">Autoridades cubanas activan fase informativa. Se esperan lluvias intensas en provincias orientales.</p>
+                        <a href="#" class="text-sm text-cuba-red hover:text-red-400 font-medium inline-flex items-center gap-1">
+                            Ver actualización <i data-feather="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Category Sections Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <!-- Política -->
+            <section>
+                <div class="flex items-center justify-between mb-4 pb-2 border-b-2 border-cuba-red">
+                    <h3 class="font-sans text-xl font-bold uppercase tracking-wide text-white">Política</h3>
+                    <a href="#" class="text-xs font-medium text-gray-500 hover:text-cuba-red transition-colors">Ver más</a>
+                </div>
+                <div class="space-y-4">
+                    <article class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-lg mb-3">
+                            <img src="https://static.photos/government/640x360/22" alt="Política" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h4 class="font-sans font-bold leading-snug group-hover:text-cuba-red transition-colors text-white">
+                            Asamblea Nacional aprueba nuevas medidas económicas para 2025
+                        </h4>
+                    </article>
+                    <article class="group cursor-pointer pt-3 border-t border-gray-800">
+                        <h4 class="font-medium text-sm leading-snug group-hover:text-cuba-red transition-colors text-gray-300">
+                            Reacciones mixtas ante el anuncio de unificación monetaria
+                        </h4>
+                    </article>
+                    <article class="group cursor-pointer pt-3 border-t border-gray-800">
+                        <h4 class="font-medium text-sm leading-snug group-hover:text-cuba-red transition-colors text-gray-300">
+                            Díaz-Canel recibe delegación empresarial de la Unión Europea
+                        </h4>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Economía -->
+            <section>
+                <div class="flex items-center justify-between mb-4 pb-2 border-b-2 border-cuba-blue">
+                    <h3 class="font-sans text-xl font-bold uppercase tracking-wide text-white">Economía</h3>
+                    <a href="#" class="text-xs font-medium text-gray-500 hover:text-cuba-blue transition-colors">Ver más</a>
+                </div>
+                <div class="space-y-4">
+                    <article class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-lg mb-3">
+                            <img src="https://static.photos/finance/640x360/33" alt="Economía" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h4 class="font-sans font-bold leading-snug group-hover:text-cuba-blue transition-colors text-white">
+                            El dólar en el mercado informal alcanza nuevo máximo histórico
+                        </h4>
+                    </article>
+                    <article class="group cursor-pointer pt-3 border-t border-gray-800">
+                        <h4 class="font-medium text-sm leading-snug group-hover:text-cuba-blue transition-colors text-gray-300">
+                            Turismo ruso muestra recuperación con vuelos directos desde Moscú
+                        </h4>
+                    </article>
+                    <article class="group cursor-pointer pt-3 border-t border-gray-800">
+                        <h4 class="font-medium text-sm leading-snug group-hover:text-cuba-blue transition-colors text-gray-300">
+                            Pequeños negocios reportan aumento de licencias en 2024
+                        </h4>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Cultura -->
+            <section>
+                <div class="flex items-center justify-between mb-4 pb-2 border-b-2 border-green-600">
+                    <h3 class="font-sans text-xl font-bold uppercase tracking-wide text-white">Cultura</h3>
+                    <a href="#" class="text-xs font-medium text-gray-500 hover:text-green-600 transition-colors">Ver más</a>
+                </div>
+                <div class="space-y-4">
+                    <article class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-lg mb-3">
+                            <img src="https://static.photos/nature/640x360/77" alt="Cultura" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h4 class="font-sans font-bold leading-snug group-hover:text-green-600 transition-colors text-white">
+                            Premio Casa de las Américas celebra su 65 aniversario
+                        </h4>
+                    </article>
+                    <article class="group cursor-pointer pt-3 border-t border-gray-800">
+                        <h4 class="font-medium text-sm leading-snug group-hover:text-green-600 transition-colors text-gray-300">
+                            Netflix anuncia nueva serie documental sobre música cubana
+                        </h4>
+                    </article>
+                    <article class="group cursor-pointer pt-3 border-t border-gray-800">
+                        <h4 class="font-medium text-sm leading-snug group-hover:text-green-600 transition-colors text-gray-300">
+                            Restauran murales de Amelia Peláez en edificio habanero
+                        </h4>
+                    </article>
+                </div>
+            </section>
+        </div>
+        <!-- Full Width Feature -->
+        <section class="mb-8">
+            <div class="relative bg-gradient-to-r from-gray-900 to-black rounded-2xl overflow-hidden border border-gray-800">
+                <div class="absolute inset-0">
+                    <img src="https://static.photos/aerial/1200x630/99" alt="Cuba aerial" class="w-full h-full object-cover opacity-40">
+                </div>
+                <div class="relative p-8 md:p-12 lg:p-16">
+                    <div class="max-w-2xl">
+                        <span class="inline-block px-3 py-1 bg-cuba-red text-white text-xs font-bold uppercase tracking-wider rounded mb-4">Especial</span>
+                        <h2 class="font-sans text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                            La Cuba que no vemos: historias desde el interior
+                        </h2>
+                        <p class="text-gray-400 text-lg mb-6 leading-relaxed">
+                            Durante tres meses, nuestro equipo recorrió más de 2,000 kilómetros para documentar la realidad de las provincias olvidadas. Un reportaje exclusivo en cinco partes.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <button class="px-6 py-3 bg-cuba-red text-white font-medium rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2">
+                                <i data-feather="play" class="w-5 h-5"></i>
+                                Ver documental
+                            </button>
+                            <button class="px-6 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-colors backdrop-blur border border-white/20">
+                                Leer artículo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- More News Grid -->
+        <section class="mb-8">
+            <h3 class="font-sans text-2xl font-bold uppercase tracking-wide mb-6 pb-2 border-b-2 border-gray-800 text-white">Más Noticias</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <article class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-lg mb-3">
+                        <img src="https://static.photos/sport/640x360/11" alt="Deportes" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <span class="text-xs font-bold text-cuba-red uppercase tracking-wider">Deportes</span>
+                    <h4 class="font-sans font-bold mt-1 leading-snug group-hover:text-cuba-red transition-colors text-white">
+                        Cuba clasifica al Clásico Mundial de Béisbol 2026
+                    </h4>
+                    <p class="text-sm text-gray-400 mt-2 line-clamp-2">
+                        El equipo nacional aseguró su boleto tras victoria ante Nicaragua en el preclásico.
+                    </p>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-lg mb-3">
+                        <img src="https://static.photos/food/640x360/44" alt="Gastronomía" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Gastronomía</span>
+                    <h4 class="font-sans font-bold mt-1 leading-snug group-hover:text-green-600 transition-colors text-white">
+                        El resurgir de la cocina paladar en La Habana
+                    </h4>
+                    <p class="text-sm text-gray-400 mt-2 line-clamp-2">
+                        Nuevos restaurantes privados apuestan por la alta cocina con ingredientes locales.
+                    </p>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-lg mb-3">
+                        <img src="https://static.photos/education/640x360/66" alt="Educación" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <span class="text-xs font-bold text-cuba-blue uppercase tracking-wider">Educación</span>
+                    <h4 class="font-sans font-bold mt-1 leading-snug group-hover:text-cuba-blue transition-colors text-white">
+                        Universidad de La Habana estrena plataforma virtual
+                    </h4>
+                    <p class="text-sm text-gray-400 mt-2 line-clamp-2">
+                        Más de 50,000 estudiantes tendrán acceso a cursos en línea gratuitos.
+                    </p>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-lg mb-3">
+                        <img src="https://static.photos/travel/640x360/22" alt="Viajes" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <span class="text-xs font-bold text-purple-600 uppercase tracking-wider">Viajes</span>
+                    <h4 class="font-sans font-bold mt-1 leading-snug group-hover:text-purple-600 transition-colors text-white">
+                        Viñales entre los 50 destinos más bellos del mundo
+                    </h4>
+                    <p class="text-sm text-gray-400 mt-2 line-clamp-2">
+                        La revista National Geographic incluye al valle pinareño en su lista anual.
+                    </p>
+                </article>
+            </div>
+        </section>
+        <!-- Newsletter Section -->
+        <section class="bg-gray-900 border border-gray-800 rounded-2xl p-8 md:p-12">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="w-16 h-16 bg-cuba-red rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i data-feather="mail" class="w-8 h-8 text-white"></i>
+                </div>
+                <h3 class="font-sans text-2xl md:text-3xl font-bold mb-4 text-white">Mantente informado</h3>
+                <p class="text-gray-400 mb-6">Recibe cada mañana las noticias más importantes sobre Cuba directamente en tu correo. Gratis y sin spam.</p>
+                <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                    <input type="email" placeholder="Tu correo electrónico" class="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-cuba-red focus:ring-2 focus:ring-cuba-red/20">
+                    <button type="submit" class="px-6 py-3 bg-cuba-red text-white font-medium rounded-lg hover:bg-red-700 transition-colors">
+                        Suscribirme
+                    </button>
+                </form>
+                <p class="text-xs text-gray-600 mt-4">Al suscribirte, aceptas nuestra política de privacidad.</p>
+            </div>
+        </section>
+</main>
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div>
+                    <h2 class="font-sans text-3xl font-black text-cuba-red mb-2">LA FAMILIA</h2>
+                    <p class="font-sans text-xl font-bold text-cuba-blue tracking-wider uppercase mb-4">Cubana</p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Información veraz y oportuna para la comunidad cubana en todo el mundo. Desde 2010 conectando a las familias.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-cuba-red transition-colors">
+                            <i data-feather="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-cuba-red transition-colors">
+                            <i data-feather="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-cuba-red transition-colors">
+                            <i data-feather="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-cuba-red transition-colors">
+                            <i data-feather="youtube" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Secciones -->
+                <div>
+                    <h4 class="font-sans font-bold uppercase tracking-wider mb-4 text-white">Secciones</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Videos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Playlists</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Noticias</a></li>
+                    </ul>
+                </div>
+
+                <!-- Servicios -->
+                <div>
+                    <h4 class="font-sans font-bold uppercase tracking-wider mb-4 text-white">Servicios</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Suscripción</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Newsletters</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Podcast</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Archivo</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Anunciar</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Trabaja con nosotros</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div>
+                    <h4 class="font-sans font-bold uppercase tracking-wider mb-4 text-white">Contacto</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i data-feather="map-pin" class="w-5 h-5 flex-shrink-0 text-cuba-red"></i>
+                            <span>Miami, Florida / La Habana, Cuba</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-feather="mail" class="w-5 h-5 flex-shrink-0 text-cuba-red"></i>
+                            <a href="mailto:info@lafamiliacubana.com" class="hover:text-white transition-colors">info@lafamiliacubana.com</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-feather="phone" class="w-5 h-5 flex-shrink-0 text-cuba-red"></i>
+                            <span>+1 (305) 555-0123</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-sm text-gray-600">
+                    © 2024 La Familia Cubana. Todos los derechos reservados.
+                </p>
+                <div class="flex gap-6 text-sm text-gray-600">
+                    <a href="#" class="hover:text-white transition-colors">Privacidad</a>
+                    <a href="#" class="hover:text-white transition-colors">Términos</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookies</a>
+                    <a href="#" class="hover:text-white transition-colors">Accesibilidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script src="script.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script>feather.replace();</script>
+</body>
+</html>
