@@ -13,6 +13,14 @@ function updateDate() {
     }
 }
 
+// Current Year Display
+function updateYear() {
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+}
+
 // Mobile Menu Toggle
 function initMobileMenu() {
     const menuTrigger = document.getElementById('menu-trigger');
@@ -64,6 +72,10 @@ function initSearch() {
     const searchButton = searchIcon ? searchIcon.closest('button') : document.querySelector('button');
 
     if (!searchButton) return;
+
+    // Only activate search if button is visible (not hidden by CSS)
+    const isVisible = window.getComputedStyle(searchButton).display !== 'none';
+    if (!isVisible) return;
 
     searchButton.addEventListener('click', () => {
         // Create and show search modal
@@ -211,8 +223,9 @@ function initNewsletterForm() {
 // Initialize Everything
 document.addEventListener('DOMContentLoaded', () => {
     updateDate();
+    updateYear();
     initMobileMenu();
-    initSearch();
+    // initSearch(); // Temporarily disabled - search functionality causing issues on mobile
     initLazyLoading();
     initReadingProgress();
     initArticleTracking();

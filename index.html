@@ -50,7 +50,7 @@
                     <span class="mx-4">• Turismo europeo muestra recuperación gradual</span>
                 </div>
             </div>
-            <span class="text-xs opacity-80" id="current-date"></span>
+            <span class="hidden lg:inline-block text-xs opacity-80" id="current-date"></span>
         </div>
     </div>
     <!-- Top Navigation -->
@@ -69,9 +69,9 @@
                         <div class="logo-container text-center lg:text-left">
                             <img src="assets/logos/logo.svg" alt="La Familia Cubana" class="h-24 md:h-32 mx-auto lg:mx-0">
                             
-                            <p class="text-xs text-gray-400 mt-1 font-medium tracking-wide hidden sm:block">
+                            <!-- <p class="text-xs text-gray-400 mt-1 font-medium tracking-wide hidden sm:block">
                                 Noticias, vídeos e información para la comunidad cubana
-                            </p>
+                            </p> -->
                         </div>
                     </a>
                 </div>
@@ -82,7 +82,7 @@
                         <i data-feather="bell" class="w-4 h-4"></i>
                         <span>Suscríbete</span>
                     </button>
-                    <button class="p-2 hover:bg-gray-900 rounded-full transition-colors relative text-white">
+                    <button class="hidden md:flex p-2 hover:bg-gray-900 rounded-full transition-colors relative text-white">
                         <i data-feather="search" class="w-5 h-5"></i>
                     </button>
                     <button class="p-2 hover:bg-gray-900 rounded-full transition-colors text-white">
@@ -166,7 +166,7 @@
                     <a href="#" class="text-gray-400 hover:text-white transition-colors">#DíazCanel</a>
                     <a href="#" class="text-gray-400 hover:text-white transition-colors">#TurismoCuba</a>
                     <a href="#" class="text-gray-400 hover:text-white transition-colors">#MLBCuba</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">#Huracán2024</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">#Huracán2026</a>
                 </div>
             </div>
         </div>
@@ -232,7 +232,7 @@
                             Expertos analizan las implicaciones del último anuncio gubernamental y cómo podría transformar el día a día de millones de hogares en la isla y en el exilio.
                         </p>
                         <div class="flex items-center gap-3 text-sm text-gray-500">
-                            <span class="font-medium text-cuba-blue">Por María Elena Santos</span>
+                            <span class="font-medium text-cuba-blue">Por Redacción La Familia Cubana</span>
                             <span>•</span>
                             <span>Hace 2 horas</span>
                         </div>
@@ -503,11 +503,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 <!-- Brand -->
                 <div>
-                    <h2 class="font-sans text-3xl font-black text-cuba-red mb-2">LA FAMILIA</h2>
-                    <p class="font-sans text-xl font-bold text-cuba-blue tracking-wider uppercase mb-4">Cubana</p>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    <img src="assets/logos/logo.svg" alt="La Familia Cubana" class="h-16 md:h-20 mb-4">
+                    <!--<p class="text-gray-400 text-sm leading-relaxed mb-4">
                         Información veraz y oportuna para la comunidad cubana en todo el mundo. Desde 2010 conectando a las familias.
-                    </p>
+                    </p>-->
                     <div class="flex gap-3">
                         <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-cuba-red transition-colors">
                             <i data-feather="facebook" class="w-5 h-5"></i>
@@ -570,7 +569,7 @@
             <!-- Bottom Bar -->
             <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
                 <p class="text-sm text-gray-600">
-                    © 2024 La Familia Cubana. Todos los derechos reservados.
+                    © <span id="year"></span> La Familia Cubana. Todos los derechos reservados.
                 </p>
                 <div class="flex gap-6 text-sm text-gray-600">
                     <a href="#" class="hover:text-white transition-colors">Privacidad</a>
