@@ -3,38 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Familia Cubana</title>
+    <title>La Familia Cubana - Noticias de Cuba para la Diaspora | Remesas, Política, Economía</title>
+    <meta name="description" content="Noticias actualizadas sobre Cuba: política, economía, remesas, cultura y deportes. Portal para la comunidad cubana en el mundo. Videos, análisis exclusivos.">
+    <meta name="keywords" content="Cuba, noticias Cuba, remesas, diaspora cubana, política Cuba, economía Cuba, La Habana">
+    <meta name="author" content="La Familia Cubana">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="La Familia Cubana - Noticias de Cuba para la Diaspora">
+    <meta property="og:description" content="Noticias actualizadas sobre Cuba: política, economía, remesas, cultura. Portal para la comunidad cubana.">
+    <meta property="og:image" content="https://tu-dominio.com/assets/logos/logo.svg">
+    <meta property="og:url" content="https://tu-dominio.com">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="La Familia Cubana - Noticias de Cuba">
+    <meta name="twitter:description" content="Portal de noticias para la comunidad cubana. Remesas, política, economía.">
+    <meta name="twitter:image" content="https://tu-dominio.com/assets/logos/logo.svg">
+    <link rel="canonical" href="https://tu-dominio.com">
     <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind ahora via PostCSS/Vite build - CDN removido -->
+    <!-- Fonts via CSS variables - CDN removido para performance -->
+    <!-- Feather Icons mantenido CDN temporal - migrar build Fase 3 -->
     <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=Merriweather:wght@300;400;700;900&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cuba: {
-                            red: '#FF0000',
-                            blue: '#002A8F',
-                            white: '#FFFFFF',
-                            dark: '#1a1a1a',
-                            gray: '#f5f5f5',
-                            text: '#333333'
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['Merriweather', 'Georgia', 'serif'],
-                        condensed: ['Roboto Condensed', 'Arial Narrow', 'sans-serif'],
-                        sans: ['Manrope', 'Inter', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 <body class="bg-black font-sans text-white">
     <!-- Breaking News Ticker -->
@@ -219,7 +209,7 @@
                 <!-- Main Featured Story -->
                 <article class="lg:col-span-7 group cursor-pointer">
                     <div class="relative overflow-hidden rounded-lg mb-4">
-                        <img src="https://static.photos/cityscape/1024x576/42" alt="La Habana" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1588880368584-6d9c9e4d9e5c?w=1024&h=576&fit=crop" alt="Malecón de La Habana al atardecer, símbolo de la capital cubana" loading="lazy" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute top-4 left-4">
                             <span class="px-3 py-1 bg-cuba-red text-white text-xs font-bold uppercase tracking-wider rounded">Destacado</span>
                         </div>
@@ -253,7 +243,7 @@
                             <span class="text-xs text-gray-500">Hace 4 horas</span>
                         </div>
                         <div class="w-32 h-24 flex-shrink-0 overflow-hidden rounded-lg">
-                            <img src="https://static.photos/medical/320x240/15" alt="Médicos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <img src="https://images.unsplash.com/photo-1588880306610-340a58053e5b?w=320&h=240&fit=crop" alt="Médicos cubanos en misión internacional" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
                     </article>
 
@@ -269,7 +259,7 @@
                             <span class="text-xs text-gray-500">Hace 6 horas</span>
                         </div>
                         <div class="w-32 h-24 flex-shrink-0 overflow-hidden rounded-lg">
-                            <img src="https://static.photos/technology/320x240/88" alt="WiFi Cuba" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <img src="https://images.unsplash.com/photo-1618005182387-a1d92e2c1c46?w=320&h=240&fit=crop" alt="Personas usando WiFi público en parque habanero, Cuba" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
                     </article>
 
@@ -285,7 +275,7 @@
                             <span class="text-xs text-gray-500">Hace 8 horas</span>
                         </div>
                         <div class="w-32 h-24 flex-shrink-0 overflow-hidden rounded-lg">
-                            <img src="https://static.photos/event/320x240/55" alt="Concierto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <img src="https://images.unsplash.com/photo-1512998512132-9a68c1b3a92f?w=320&h=240&fit=crop" alt="Concierto multitudinario en La Habana durante los Rolling Stones 2016" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
                     </article>
 
@@ -580,8 +570,8 @@
             </div>
         </div>
     </footer>
-<script src="script.js"></script>
-    <script src="assets/js/carousel.js"></script>
+    <script type="module" src="/script.js"></script>
+    <script type="module" src="/assets/js/carousel.js"></script>
     <script>feather.replace();</script>
 </body>
 </html>

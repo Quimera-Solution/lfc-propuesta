@@ -1,17 +1,38 @@
 /* Custom Animations */
-/* Base font-family: Manrope as primary sans-serif and condensed fallback */
-:root {
-    --font-sans: 'Manrope', 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --font-condensed: 'Roboto Condensed', 'Arial Narrow', sans-serif;
+ /* Base font-family: Manrope as primary sans-serif and condensed fallback */
+ :root {
+     --font-sans: 'Manrope', 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+     --font-condensed: 'Roboto Condensed', 'Arial Narrow', sans-serif;
+ }
+
+ .font-sans {
+     font-family: var(--font-sans);
+ }
+
+ .font-condensed {
+     font-family: var(--font-condensed);
+ }
+ 
+/* WebP Support */
+@supports (picture: true) {
+    img {
+        content-visibility: auto;
+        contain-intrinsic-size: 300px 200px;
+    }
 }
 
-.font-sans {
-    font-family: var(--font-sans);
+/* Enhanced Mobile Carousel */
+@media (max-width: 768px) {
+    #hero-carousel img {
+        height: 200px !important;
+    }
+    
+    .carousel-indicator {
+        width: 8px;
+        height: 8px;
+    }
 }
 
-.font-condensed {
-    font-family: var(--font-condensed);
-}
 @keyframes marquee {
     0% {
         transform: translateX(0);
