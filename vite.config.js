@@ -1,25 +1,30 @@
 import { defineConfig } from 'vite'
+import path from 'path'
+import { resolve } from 'path'
 
 export default defineConfig({
-  base: './',
+  plugins: [],
+  root: '.',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     rollupOptions: {
-      input: 'index.html',
-      output: {
-        entryFileNames: '[name].js',
-        chunkFileNames: '[name].js',
-        assetFileNames: ({ name }) => {
-          if (/\.css$/.test(name ?? '')) {
-            return 'style.[hash].css'
-          }
-          return 'assets/[name].[hash].[ext]'
-        }
-      }
-    }
+      input: {
+        main: resolve(__dirname, 'index.html'),
+      },
+    },
   },
   server: {
-    open: true
-  }
+    port: 3000,
+    open: true,
+  },
+  css: {
+    postcss: './postcss.config.js',
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './'),
+    },
+  },
 })
+

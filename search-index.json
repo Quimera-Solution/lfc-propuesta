@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Nueva era de relaciones diplomáticas: ¿Qué significa el acercamiento histórico para las familias cubanas?",
+    "category": "Destacado",
+    "excerpt": "Expertos analizan las implicaciones del último anuncio gubernamental y cómo podría transformar el día a día de millones de hogares en la isla y en el exilio.",
+    "url": "/destacado/diplomacia-cuba-2024",
+    "keywords": ["diplomacia", "familias cubanas", "relaciones", "anuncio gubernamental"]
+  },
+  {
+    "id": 2,
+    "title": "El éxodo de médicos cubanos: crónica de una diáspora silenciosa",
+    "category": "Salud",
+    "excerpt": "Más de 3,000 profesionales de la salud han abandonado sus misiones internacionales en el último año.",
+    "url": "/salud/medicos-cubanos-exodo",
+    "keywords": ["médicos", "exodo", "misiones", "salud"]
+  },
+  {
+    "id": 3,
+    "title": "WiFi en los parques: así cambió internet en Cuba una década después",
+    "category": "Tecnología",
+    "excerpt": "De 35 zonas en 2015 a más de 1,200 puntos de acceso hoy. La revolución digital cubana en cifras.",
+    "url": "/tecnologia/wifi-parques-cuba",
+    "keywords": ["wifi", "internet", "digital", "cuba"]
+  },
+  {
+    "id": 4,
+    "title": "Los Rolling Stones en Cuba: 8 años del concierto que hizo historia",
+    "category": "Cultura",
+    "excerpt": "Testimonios inéditos de quienes vivieron aquella noche de marzo cuando el rock llegó a La Habana.",
+    "url": "/cultura/rolling-stones-cuba",
+    "keywords": ["rolling stones", "concierto", "habana", "rock"]
+  },
+  {
+    "id": 5,
+    "title": "Asamblea Nacional aprueba nuevas medidas económicas para 2025",
+    "category": "Política",
+    "excerpt": "Nuevas políticas para enfrentar la crisis económica y atraer inversión extranjera.",
+    "url": "/politica/medidas-economicas-2025",
+    "keywords": ["asamblea", "economicas", "2025", "politica"]
+  },
+  {
+    "id": 6,
+    "title": "El dólar en el mercado informal alcanza nuevo máximo histórico",
+    "category": "Economía",
+    "excerpt": "El tipo de cambio informal supera los 350 CUP por USD en La Habana.",
+    "url": "/economia/dolar-maximo-informal",
+    "keywords": ["dolar", "cambio", "informal", "cup"]
+  }
+]

@@ -20,7 +20,7 @@
     <meta name="twitter:image" content="https://tu-dominio.com/assets/logos/logo.svg">
     <link rel="canonical" href="https://tu-dominio.com">
     <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <!-- Tailwind ahora via PostCSS/Vite build - CDN removido -->
     <!-- Fonts via CSS variables - CDN removido para performance -->
     <!-- Feather Icons mantenido CDN temporal - migrar build Fase 3 -->
@@ -72,7 +72,7 @@
                         <i data-feather="bell" class="w-4 h-4"></i>
                         <span>Suscríbete</span>
                     </button>
-                    <button class="hidden md:flex p-2 hover:bg-gray-900 rounded-full transition-colors relative text-white">
+<button class="hidden md:flex p-2 hover:bg-gray-900 rounded-full transition-colors relative text-white" aria-label="Buscar">
                         <i data-feather="search" class="w-5 h-5"></i>
                     </button>
                     <button class="p-2 hover:bg-gray-900 rounded-full transition-colors text-white">
@@ -570,8 +570,8 @@
             </div>
         </div>
     </footer>
-    <script type="module" src="/script.js"></script>
-    <script type="module" src="/assets/js/carousel.js"></script>
+    <script type="module" src="./script.js"></script> 
+    <script type="module" src="./assets/js/carousel.js"></script> 
     <script>feather.replace();</script>
 </body>
 </html>

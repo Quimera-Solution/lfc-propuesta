@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Custom Animations */
  /* Base font-family: Manrope as primary sans-serif and condensed fallback */
  :root {
@@ -56,14 +60,6 @@ html {
     height: 8px;
 }
 
-
-/* Carousel styles */
-#hero-carousel { position: relative; }
-.carousel-track { display: flex; transition: transform 0.7s ease; will-change: transform; }
-.carousel-slide { min-width: 100%; }
-.carousel-indicator { width: 10px; height: 10px; opacity: 0.6; }
-.carousel-indicator.active { opacity: 1; background: #fff; }
-#hero-carousel img { display: block; }
 
 ::-webkit-scrollbar-track {
     background: #1a1a1a;
